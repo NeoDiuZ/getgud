@@ -236,7 +236,7 @@ function HeroSection() {
           picsum.photos seed is deterministic — always returns the same image.
         */}
         <Image
-          src="/interface.png"
+          src="/Interface.png"
           alt="Neural Drive brain-computer interface data visualization dashboard"
           height={720}
           width={1400}
