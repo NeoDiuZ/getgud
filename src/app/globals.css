@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Fontshare fonts ──────────────────────────────── */
+/* Loaded via <link> in layout.tsx */
+
+/* ── Base layer overrides ─────────────────────────── */
+@layer base {
+  :root {
+    --font-display: "Cabinet Grotesk", system-ui, sans-serif;
+    --font-body:    "Satoshi",          system-ui, sans-serif;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: #F8FBF9;
+    color: #0C1C14;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+/* ── Reduced motion ───────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
