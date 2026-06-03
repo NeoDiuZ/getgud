@@ -5,11 +5,20 @@ import Image from "next/image";
 import { motion, AnimatePresence, useInView, useScroll, useTransform, type MotionValue } from "framer-motion";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import Floating, { FloatingElement } from "@/components/ui/parallax-floating";
+import { Droplet, UtensilsCrossed, Bell, Bath, MapPin, Tv2, Volume2 } from "lucide-react";
 
 /* ================================================================
    EASE CURVE — shared across all motion
 ================================================================ */
 const EASE: [number, number, number, number] = [0.23, 1, 0.32, 1];
+
+/* ================================================================
+   CONTACT LINKS — two intents: book a demo, or investor/partner
+================================================================ */
+const DEMO_MAIL =
+  "https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20%E2%80%94%20Book%20a%20Demo";
+const INVESTOR_MAIL =
+  "https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20%E2%80%94%20Investor%20%26%20Partnership%20Inquiry";
 
 /* ================================================================
    REVEAL — scroll-triggered fade-up wrapper
@@ -59,10 +68,10 @@ function Nav() {
   }, []);
 
   const links = [
-    { label: "Technology", href: "#technology" },
-    { label: "Research",   href: "#process" },
-    { label: "Compare",    href: "/compare" },
-    { label: "About",      href: "#vision" },
+    { label: "Try it",       href: "#try" },
+    { label: "How it works", href: "#process" },
+    { label: "Technology",   href: "#technology" },
+    { label: "Compare",      href: "/compare" },
   ];
 
   return (
@@ -99,12 +108,12 @@ function Nav() {
 
         {/* Desktop CTA */}
         <a
-          href="https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20Access%20Request"
+          href={DEMO_MAIL}
           target="_blank"
           rel="noopener noreferrer"
           className="ml-1.5 hidden whitespace-nowrap rounded-full bg-nd-primary px-4 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-nd-primary-hover active:scale-95 md:inline-flex"
         >
-          Request Access
+          Book a demo
         </a>
 
         {/* Mobile hamburger */}
@@ -149,13 +158,13 @@ function Nav() {
             </ul>
             <div className="border-t border-nd-border-dim p-2">
               <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20Access%20Request"
+                href={DEMO_MAIL}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMenuOpen(false)}
                 className="block rounded-xl bg-nd-primary px-4 py-3 text-center text-sm font-semibold text-white transition-all hover:bg-nd-primary-hover"
               >
-                Request Access
+                Book a demo
               </a>
             </div>
           </motion.div>
@@ -198,21 +207,43 @@ function HeroSection() {
               <p
                 className="mx-auto mb-9 text-nd-muted"
                 style={{
-                  maxWidth: "44ch",
+                  maxWidth: "46ch",
                   fontSize: "clamp(1rem, 1.4vw, 1.125rem)",
                   lineHeight: 1.7,
                 }}
               >
-                Neural Drive enables paralyzed patients to communicate instantly
-                through breakthrough brain-computer interface technology.
+                Stroke and paralysis can take away speech. Neural Drive gives it
+                back — two deliberate blinks speak essential needs aloud, set up
+                in 10 seconds, with no surgery and no gel.
               </p>
+
+              {/* Hero CTAs — primary action + tangible proof */}
+              <div className="mx-auto mb-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                <a
+                  href={DEMO_MAIL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center rounded-full bg-nd-primary px-7 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-nd-primary-hover active:scale-95"
+                >
+                  Book a demo
+                </a>
+                <a
+                  href="#try"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-nd-border px-7 py-3.5 text-sm font-semibold text-nd-ink transition-all duration-200 hover:border-nd-primary/50 hover:bg-nd-ink/[0.03] active:scale-95"
+                >
+                  Hear it work
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                    <path d="M6.5 2v9M2 6.5l4.5 4.5L11 6.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </a>
+              </div>
 
               {/* Hero stats strip */}
               <div className="mx-auto mb-2 grid grid-cols-3 overflow-hidden rounded-2xl border border-nd-border-dim bg-nd-border-dim gap-px w-full max-w-[520px]">
                 {[
-                  { value: "10s",   label: "Setup time" },
-                  { value: "$275K", label: "Funding secured" },
-                  { value: "HSA",   label: "Class A · Q1 2026" },
+                  { value: "10s",  label: "Setup time" },
+                  { value: "2",    label: "Blinks to speak" },
+                  { value: "HSA",  label: "Class A · Q1 2026" },
                 ].map(({ value, label }) => (
                   <div
                     key={value}
@@ -250,6 +281,102 @@ function HeroSection() {
 }
 
 /* ================================================================
+   TRY IT — interactive command tiles that speak aloud
+   Makes the core promise tangible: blink → a need is voiced.
+================================================================ */
+const COMMANDS = [
+  { label: "Water",      file: "water.mp3",      Icon: Droplet },
+  { label: "Food",       file: "food.mp3",       Icon: UtensilsCrossed },
+  { label: "Help",       file: "help.mp3",       Icon: Bell },
+  { label: "Washroom",   file: "washroom.mp3",   Icon: Bath },
+  { label: "Outing",     file: "outing.mp3",     Icon: MapPin },
+  { label: "Television", file: "television.mp3", Icon: Tv2 },
+] as const;
+
+function TrySection() {
+  const [active, setActive] = useState<string | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const play = (file: string, label: string) => {
+    if (typeof window === "undefined") return;
+    if (audioRef.current) audioRef.current.pause();
+    const audio = new Audio(`/sounds/${file}`);
+    audioRef.current = audio;
+    setActive(label);
+    audio.onended = () => setActive((cur) => (cur === label ? null : cur));
+    audio.play().catch(() => setActive(null));
+  };
+
+  return (
+    <section
+      id="try"
+      className="border-t border-nd-border-dim py-20 md:py-36"
+      aria-labelledby="try-heading"
+    >
+      <div className="mx-auto max-w-[1280px] px-4 sm:px-8">
+        <Reveal className="mb-10 md:mb-14">
+          <span className="mb-5 block text-[0.6875rem] font-semibold uppercase tracking-[0.22em] text-nd-primary">
+            Try it
+          </span>
+          <h2
+            id="try-heading"
+            className="font-display font-extrabold tracking-tighter text-nd-ink"
+            style={{ fontSize: "clamp(2rem, 3.5vw, 3.125rem)", lineHeight: 1.1, maxWidth: "18ch" }}
+          >
+            Hear what it gives back
+          </h2>
+          <p className="mt-4 max-w-[52ch] leading-relaxed text-nd-muted" style={{ fontSize: "0.9375rem" }}>
+            Two deliberate blinks select a tile, and Neural Drive speaks the need
+            aloud. Tap any tile to hear the actual voice prompts our users rely on
+            every day.
+          </p>
+        </Reveal>
+
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:gap-5">
+          {COMMANDS.map(({ label, file, Icon }, i) => {
+            const isActive = active === label;
+            return (
+              <Reveal key={label} delay={i * 0.06}>
+                <button
+                  onClick={() => play(file, label)}
+                  aria-label={`Play the "${label}" voice prompt`}
+                  className={`group flex w-full flex-col items-center justify-center gap-4 rounded-[1.25rem] border bg-nd-surface px-6 py-10 transition-all duration-300 active:scale-[0.98] ${
+                    isActive
+                      ? "border-nd-primary shadow-lg shadow-nd-primary/15"
+                      : "border-nd-border-dim hover:border-nd-primary/50 hover:shadow-lg hover:shadow-nd-primary/10"
+                  }`}
+                >
+                  <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-nd-primary/10 text-nd-primary">
+                    {isActive && (
+                      <span
+                        className="absolute inset-0 animate-pulse-out rounded-full border border-nd-primary"
+                        aria-hidden="true"
+                      />
+                    )}
+                    <Icon className="h-6 w-6" strokeWidth={1.6} aria-hidden="true" />
+                  </span>
+                  <span className="font-display text-lg font-extrabold tracking-tight text-nd-ink">
+                    {label}
+                  </span>
+                  <span
+                    className={`inline-flex items-center gap-1.5 text-[0.75rem] font-medium transition-colors ${
+                      isActive ? "text-nd-primary" : "text-nd-muted"
+                    }`}
+                  >
+                    <Volume2 className="h-3.5 w-3.5" aria-hidden="true" />
+                    {isActive ? "Speaking…" : "Tap to hear"}
+                  </span>
+                </button>
+              </Reveal>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================================================================
    MARQUEE
 ================================================================ */
 const MARQUEE_LOGOS = [
@@ -276,7 +403,7 @@ function MarqueeSection() {
               alt={logo.alt}
               height={44}
               width={180}
-              className="h-11 w-auto object-contain brightness-0 opacity-45 transition-opacity duration-200 hover:opacity-75"
+              className="h-11 w-auto object-contain grayscale opacity-70 transition-all duration-200 hover:opacity-100 hover:grayscale-0"
             />
           </div>
         ))}
@@ -287,19 +414,53 @@ function MarqueeSection() {
 }
 
 /* ================================================================
+   TRACTION STRIP — consolidated credibility (funding, clinical, regulatory)
+================================================================ */
+const TRACTION = [
+  "SGD $275K seed secured",
+  "Tan Tock Seng Hospital collaboration",
+  "HSA Class A pathway · Q1 2026",
+];
+
+function TractionStrip() {
+  return (
+    <div aria-label="Traction and milestones">
+      <div className="mx-auto flex max-w-[1280px] flex-wrap items-center justify-center gap-x-6 gap-y-3 px-4 py-6 sm:px-8">
+        {TRACTION.map((item) => (
+          <span
+            key={item}
+            className="inline-flex items-center gap-2 text-[0.8125rem] font-medium text-nd-muted"
+          >
+            <span
+              className="flex h-4 w-4 flex-shrink-0 items-center justify-center rounded-full bg-nd-primary/15"
+              aria-hidden="true"
+            >
+              <svg width="8" height="8" viewBox="0 0 8 8" fill="none">
+                <path d="M1.5 4l1.75 1.75L6.5 2.5" stroke="#0B6E42" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
+            {item}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* ================================================================
    STATS
 ================================================================ */
 const STATS = [
   { value: "10s",  label: "Setup time" },
-  { value: "2",    label: "Blinks needed" },
-  { value: "368",  label: "Users" },
-  { value: "98%",  label: "Success rate" },
+  { value: "2",    label: "Blinks to speak" },
+  { value: "368",  label: "People tested" },
+  { value: "98%",  label: "Command accuracy" },
 ];
 
 function StatsSection() {
   return (
     <div
-      className="border-b border-nd-border-dim"
+      className="border-t border-nd-border-dim"
       aria-label="Key metrics"
     >
       <div className="mx-auto grid max-w-[1280px] grid-cols-2 divide-x divide-y divide-nd-border-dim px-4 md:grid-cols-4 md:divide-y-0 sm:px-8">
@@ -342,41 +503,41 @@ interface FeatureCard {
 const FEATURE_CARDS: FeatureCard[] = [
   {
     label: "Core Engine",
-    title: "Neural Decode Engine",
-    body: "Our proprietary signal processing pipeline captures and classifies neural patterns at 30 kHz with sub-millisecond latency, resolving individual spike events across all cortical layers in real time.",
-    backBody: "A multi-layer signal processing pipeline purpose-built for clinical BCI applications.",
+    title: "Blink-to-Speech Engine",
+    body: "Two deliberate blinks select a message and Neural Drive speaks it aloud — reliably, in real time, with no implant, no gel, and no calibration ritual.",
+    backBody: "A lightweight signal pipeline tuned for real-world communication, not the lab bench.",
     backSpecs: [
-      "30 kHz real-time sampling across cortical layers",
-      "Sub-millisecond spike event classification",
-      "256-bit end-to-end encrypted signal stream",
-      "Real-time artifact rejection & noise cancellation",
-      "Compatible with dry EEG electrodes — no gel required",
+      "Reads deliberate blinks from a non-invasive forehead sensor",
+      "Speaks essential needs aloud in real time",
+      "No surgery, no gel electrodes, no technician on site",
+      "Ready within 10 seconds of placement",
+      "Runs on a compact, low-cost wearable device",
     ],
   },
   {
-    label: "Capture Resolution",
-    title: "30 kHz Sampling Rate",
-    body: "Industry-leading capture resolution for fine-grained analysis across all frequency bands, from delta to high-gamma.",
-    backBody: "Covers the full neural frequency spectrum for complete clinical picture.",
+    label: "Setup",
+    title: "Ready in 10 Seconds",
+    body: "Place it on the forehead and go. No gel, no electrode positioning, no 30-minute calibration before the first word.",
+    backBody: "Designed so a caregiver can set it up in seconds — every single time.",
     backSpecs: [
-      "Delta (0.5–4 Hz) · Deep sleep & recovery",
-      "Theta (4–8 Hz) · Memory consolidation",
-      "Alpha (8–13 Hz) · Relaxed focus",
-      "Beta (13–30 Hz) · Active cognition",
-      "High-gamma (70–150 Hz) · Motor intent capture",
+      "10-second setup vs 30+ minutes for traditional BCIs",
+      "Single forehead placement — nothing to implant",
+      "Dry sensor — no conductive gel required",
+      "No clinician needed at the bedside",
+      "A consistent routine a family member can repeat daily",
     ],
   },
   {
     label: "Intelligence",
     title: "Adaptive Calibration",
-    body: "The system learns your neural signature across sessions, improving classification accuracy through continuous model refinement.",
-    backBody: "A continuously updating model that improves classification accuracy over every session.",
+    body: "The system tunes to each person's blink pattern over a few sessions, so recognition keeps getting more reliable the more it's used.",
+    backBody: "A model that learns the individual, so accuracy improves with everyday use.",
     backSpecs: [
-      "Personalized neural signature fingerprinting",
-      "Session-over-session accuracy improvement",
-      "Automatic signal drift compensation",
-      "97.3% classification accuracy after 3 sessions",
-      "Federated learning — data never leaves the device",
+      "Tunes to each person's natural blink rhythm",
+      "Recognition improves session over session",
+      "Adjusts automatically as signal conditions change",
+      "98% command accuracy in testing to date",
+      "Personal calibration stays on the device",
     ],
   },
 ];
@@ -497,7 +658,7 @@ function FeaturesSection() {
     <section
       id="technology"
       ref={sectionRef}
-      className="py-20 md:py-36"
+      className="border-t border-nd-border-dim py-20 md:py-36"
       aria-labelledby="features-heading"
     >
       <AnimatePresence>
@@ -544,12 +705,12 @@ function FeaturesSection() {
                 className="mb-3 font-display font-extrabold tracking-tighter text-nd-ink"
                 style={{ fontSize: "clamp(1.125rem, 1.7vw, 1.5rem)", lineHeight: 1.2 }}
               >
-                Neural Decode Engine
+                Blink-to-Speech Engine
               </h3>
               <p className="max-w-[44ch] leading-relaxed text-nd-muted" style={{ fontSize: "0.9375rem" }}>
-                Our proprietary signal processing pipeline captures and classifies
-                neural patterns at 30 kHz with sub-millisecond latency, resolving
-                individual spike events across all cortical layers in real time.
+                Two deliberate blinks select a message and Neural Drive speaks it
+                aloud — reliably, in real time, with no implant, no gel, and no
+                calibration ritual.
               </p>
             </div>
             <div className="mt-auto pt-6">
@@ -589,19 +750,19 @@ function FeaturesSection() {
             onClick={() => setSelectedCard(1)}
           >
             <p className="mb-3 text-[0.6875rem] font-semibold uppercase tracking-[0.16em] text-nd-muted">
-              Capture Resolution
+              Setup
             </p>
             <div
               className="mb-1.5 font-display font-black leading-none tracking-tight text-nd-primary"
               style={{ fontSize: "clamp(2.75rem, 4.5vw, 4rem)" }}
-              aria-label="30 kilohertz"
+              aria-label="Ten seconds"
             >
-              30 kHz
+              10s
             </div>
-            <p className="mb-4 text-sm font-medium text-nd-muted">Sampling rate</p>
+            <p className="mb-4 text-sm font-medium text-nd-muted">From off to first word</p>
             <p className="leading-relaxed text-nd-muted" style={{ fontSize: "0.875rem" }}>
-              Industry-leading capture resolution for fine-grained analysis across
-              all frequency bands, from delta to high-gamma.
+              Place it on the forehead and go. No gel, no electrode positioning,
+              no 30-minute calibration before the first word.
             </p>
             <span className="mt-5 inline-flex items-center gap-1.5 text-[0.75rem] font-medium text-nd-primary">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -646,8 +807,8 @@ function FeaturesSection() {
             </div>
 
             <p className="leading-relaxed text-nd-muted" style={{ fontSize: "0.9375rem" }}>
-              The system learns your neural signature across sessions, improving
-              classification accuracy through continuous model refinement.
+              The system tunes to each person's blink pattern over a few sessions,
+              so recognition keeps getting more reliable the more it's used.
             </p>
             <span className="mt-5 inline-flex items-center gap-1.5 text-[0.75rem] font-medium text-nd-primary">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
@@ -676,14 +837,14 @@ const STEPS = [
   {
     num: "STEP 02",
     title: "Blink-to-Action",
-    body: "Two deliberate blinks trigger immediate action, with no latency between thought and response. No complex training or caliration required.",
-    metric: "0.8ms latency · 256-bit encrypted",
+    body: "Two deliberate blinks select a message and trigger it immediately — no complex training, no calibration ritual, and no gel electrodes to position.",
+    metric: "2 blinks · No gel · No training",
   },
   {
     num: "STEP 03",
     title: "Life-Critical Messages",
-    body: "Instant access to essential alerts and commands without delay, ensuring safety and reliability in critical situations.",
-    metric: "97.3% accuracy · Self-improving model · <1ms decode",
+    body: "Each command speaks a real need aloud — water, food, help, washroom — so caregivers understand instantly instead of guessing.",
+    metric: "98% command accuracy · Improves with use",
   },
 ];
 
@@ -819,7 +980,7 @@ function DemoSection() {
    VISION — scroll-scrub word reveal via Framer Motion
 ================================================================ */
 const VISION_WORDS =
-  "We believe the mind is humanity's most untapped interface. Neural Drive exists to close the gap between thought and action, building technology that does not just connect to the brain, but learns from it. The future of human-computer interaction is not through keyboards or touchscreens. It is through intent.".split(
+  "Losing speech does not mean losing thought. Behind every silence is a person still trying to be heard. Neural Drive exists to close that gap today — not with surgery or science fiction, but with a device a family can use in seconds to give a voice back to the people who lost theirs.".split(
     " "
   );
 
@@ -927,32 +1088,44 @@ function CTASection() {
             className="mb-5 font-display font-extrabold tracking-tighter text-nd-ink"
             style={{ fontSize: "clamp(2.25rem, 4.5vw, 4.25rem)", lineHeight: 1.06 }}
           >
-            Ready to bridge
+            Give someone
             <br />
-            the gap?
+            their voice back
           </h2>
-          <p className="mx-auto mb-11 text-nd-muted" style={{ fontSize: "clamp(0.9375rem, 1.5vw, 1.0625rem)", lineHeight: 1.65, maxWidth: "44ch" }}>
-            Partner with us to bring breakthrough brain-computer interface technology to patients who need it most.
+          <p className="mx-auto mb-11 text-nd-muted" style={{ fontSize: "clamp(0.9375rem, 1.5vw, 1.0625rem)", lineHeight: 1.65, maxWidth: "46ch" }}>
+            Clinician, family, partner, or investor — let's bring fast, non-invasive
+            communication to the people who need it most.
           </p>
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
             <a
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20Access%20Request"
+              href={DEMO_MAIL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-full bg-nd-primary px-9 py-4 text-base font-semibold text-white transition-all duration-200 hover:bg-nd-primary-hover active:scale-95"
             >
-              Request Access
+              Book a demo
             </a>
             <a
-              href="/compare"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-nd-muted transition-colors duration-200 hover:text-nd-ink"
+              href={INVESTOR_MAIL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-nd-border px-8 py-4 text-base font-semibold text-nd-ink transition-all duration-200 hover:border-nd-primary/50 hover:bg-nd-ink/[0.03] active:scale-95"
             >
-              See how we compare
+              For investors &amp; partners
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
                 <path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
           </div>
+          <a
+            href="/compare"
+            className="mt-7 inline-flex items-center gap-1.5 text-sm font-medium text-nd-muted transition-colors duration-200 hover:text-nd-ink"
+          >
+            See how we compare against every BCI in Singapore
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+              <path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
         </motion.div>
       </div>
     </section>
@@ -1003,15 +1176,15 @@ const TESTIMONIALS: Testimonial[] = [
 ];
 
 const SIZE_CLASSES = {
-  sm: "w-[170px]",
-  md: "w-[215px]",
-  lg: "w-[255px]",
+  sm: "w-[230px]",
+  md: "w-[260px]",
+  lg: "w-[290px]",
 } as const;
 
 function TestimonialCard({ quote, author, role, size }: Testimonial) {
   return (
     <div
-      className={`${SIZE_CLASSES[size]} cursor-default rounded-2xl border border-nd-border-dim bg-white/80 p-4 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-nd-primary/40 hover:shadow-md`}
+      className={`${SIZE_CLASSES[size]} cursor-default rounded-2xl border border-nd-border-dim bg-white/85 p-5 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-nd-primary/40 hover:shadow-md`}
     >
       {/* Opening quote mark */}
       <span
@@ -1020,12 +1193,12 @@ function TestimonialCard({ quote, author, role, size }: Testimonial) {
       >
         &ldquo;
       </span>
-      <p className="text-[0.75rem] leading-relaxed text-nd-muted">{quote}&rdquo;</p>
-      <div className="mt-3 border-t border-nd-border-dim pt-3">
-        <p className="font-display text-[0.75rem] font-bold tracking-tight text-nd-ink">
+      <p className="text-[0.8125rem] leading-relaxed text-nd-muted">{quote}&rdquo;</p>
+      <div className="mt-3.5 border-t border-nd-border-dim pt-3">
+        <p className="font-display text-[0.8125rem] font-bold tracking-tight text-nd-ink">
           {author}
         </p>
-        <p className="mt-0.5 text-[0.625rem] text-nd-muted">{role}</p>
+        <p className="mt-0.5 text-[0.6875rem] leading-snug text-nd-muted">{role}</p>
       </div>
     </div>
   );
@@ -1034,11 +1207,11 @@ function TestimonialCard({ quote, author, role, size }: Testimonial) {
 /* Floating layout positions — 5 cards framing the center heading.
    depth drives parallax intensity: higher = more movement on mouse. */
 const FLOAT_CONFIG = [
-  { index: 0, depth: 1.0, className: "top-[5%]  left-[41%]", delay: 0.20 }, // top vertex
-  { index: 1, depth: 1.4, className: "top-[28%] left-[7%]",  delay: 0.32 }, // upper-left
-  { index: 2, depth: 1.4, className: "top-[28%] left-[74%]", delay: 0.44 }, // upper-right
-  { index: 3, depth: 0.7, className: "top-[64%] left-[24%]", delay: 0.52 }, // lower-left
-  { index: 4, depth: 0.7, className: "top-[64%] left-[57%]", delay: 0.60 }, // lower-right
+  { index: 0, depth: 1.0, className: "top-[4%]  left-[25%]", delay: 0.20 }, // top vertex
+  { index: 1, depth: 1.3, className: "top-[27%] left-[8%]",  delay: 0.32 }, // upper-left
+  { index: 2, depth: 1.3, className: "top-[27%] left-[70%]", delay: 0.44 }, // upper-right
+  { index: 3, depth: 0.7, className: "top-[64%] left-[22%]", delay: 0.52 }, // lower-left
+  { index: 4, depth: 0.7, className: "top-[64%] left-[56%]", delay: 0.60 }, // lower-right
 ] as const;
 
 function TestimonialsSection() {
@@ -1047,8 +1220,8 @@ function TestimonialsSection() {
       className="border-t border-nd-border-dim bg-nd-bg"
       aria-label="Testimonials"
     >
-      {/* ── Mobile layout: stacked heading + horizontal scroll ── */}
-      <div className="md:hidden px-6 py-20">
+      {/* ── Mobile / tablet layout: stacked heading + horizontal scroll ── */}
+      <div className="lg:hidden px-6 py-20">
         <Reveal className="mb-8 text-center">
           <h2
             className="font-display font-black tracking-tighter text-nd-ink"
@@ -1070,7 +1243,7 @@ function TestimonialsSection() {
       </div>
 
       {/* ── Desktop layout: parallax floating cards ── */}
-      <div className="relative hidden min-h-[620px] items-center justify-center overflow-hidden md:flex">
+      <div className="relative hidden min-h-[620px] items-center justify-center overflow-hidden lg:flex">
         {/* Radial glow */}
         <div
           className="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2"
@@ -1096,7 +1269,7 @@ function TestimonialsSection() {
         </motion.div>
 
         {/* Floating testimonial cards */}
-        <Floating sensitivity={-1} className="overflow-hidden" easingFactor={0.04}>
+        <Floating sensitivity={-0.6} className="overflow-hidden" easingFactor={0.04}>
           {FLOAT_CONFIG.map((cfg) => (
             <FloatingElement key={cfg.index} depth={cfg.depth} className={cfg.className}>
               <motion.div
@@ -1258,12 +1431,15 @@ export default function Home() {
     <main className="min-h-screen bg-nd-bg">
       <Nav />
       <HeroSection />
+      <TrySection />
       <TestimonialsSection />
-      <MarqueeSection />
-      <StatsSection />
-      <FeaturesSection />
-      <ProcessSection />
       <DemoSection />
+      <ProcessSection />
+      <FeaturesSection />
+      {/* Proof & traction cluster */}
+      <StatsSection />
+      <TractionStrip />
+      <MarqueeSection />
       <VisionSection />
       <CTASection />
       <Footer />

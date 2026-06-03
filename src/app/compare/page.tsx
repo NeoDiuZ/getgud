@@ -206,12 +206,12 @@ function CompareNav() {
       <span className="px-0.5 text-[0.6875rem] text-nd-border" aria-hidden="true">/</span>
       <span className="px-2 text-[0.8125rem] font-medium text-nd-muted">Compare</span>
       <Link
-        href="https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20Access%20Request"
+        href="https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20%E2%80%94%20Book%20a%20Demo"
         target="_blank"
         rel="noopener noreferrer"
         className="ml-1.5 hidden whitespace-nowrap rounded-full bg-nd-primary px-4 py-2 text-sm font-semibold text-white transition-all duration-200 hover:bg-nd-primary-hover active:scale-95 sm:inline-flex"
       >
-        Request Access
+        Book a demo
       </Link>
     </nav>
   );
@@ -826,12 +826,12 @@ function CompareCTA() {
               </p>
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <Link
-                  href="https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20Access%20Request"
-        target="_blank"
-        rel="noopener noreferrer"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20%E2%80%94%20Book%20a%20Demo"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-semibold text-nd-primary transition-all duration-200 hover:bg-white/90 active:scale-95"
                 >
-                  Request Access
+                  Book a demo
                 </Link>
                 <Link
                   href="/"
