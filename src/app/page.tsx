@@ -212,7 +212,7 @@ function HeroSection() {
                 {[
                   { value: "10s",   label: "Setup time" },
                   { value: "$275K", label: "Funding secured" },
-                  { value: "HSA",   label: "Class B · Q1 2026" },
+                  { value: "HSA",   label: "Class A · Q1 2026" },
                 ].map(({ value, label }) => (
                   <div
                     key={value}
@@ -240,7 +240,7 @@ function HeroSection() {
           alt="Neural Drive brain-computer interface data visualization dashboard"
           height={720}
           width={1400}
-          className="mx-auto h-full rounded-2xl object-cover object-top"
+          className="mx-auto h-full w-full rounded-2xl object-cover object-center"
           draggable={false}
           priority
         />
@@ -254,7 +254,6 @@ function HeroSection() {
 ================================================================ */
 const MARQUEE_LOGOS = [
   { src: "/khooteckpuat.png",   alt: "Khoo Teck Puat Hospital" },
-  { src: "/lionbefrienders.png", alt: "Lion Befrienders" },
   { src: "/tantockseng.png",    alt: "Tan Tock Seng Hospital" },
   { src: "/nhg_logo.png",       alt: "National Healthcare Group" },
 ];
@@ -1035,11 +1034,11 @@ function TestimonialCard({ quote, author, role, size }: Testimonial) {
 /* Floating layout positions — 5 cards framing the center heading.
    depth drives parallax intensity: higher = more movement on mouse. */
 const FLOAT_CONFIG = [
-  { index: 0, depth: 0.5, className: "top-[12%] left-[16%]", delay: 0.20 },
-  { index: 1, depth: 1.0, className: "top-[10%] left-[60%]", delay: 0.35 },
-  { index: 2, depth: 2.0, className: "top-[46%] left-[8%]",  delay: 0.50 },
-  { index: 3, depth: 0.8, className: "top-[68%] left-[22%]", delay: 0.30 },
-  { index: 4, depth: 1.0, className: "top-[66%] left-[58%]", delay: 0.60 },
+  { index: 0, depth: 1.0, className: "top-[5%]  left-[41%]", delay: 0.20 }, // top vertex
+  { index: 1, depth: 1.4, className: "top-[28%] left-[7%]",  delay: 0.32 }, // upper-left
+  { index: 2, depth: 1.4, className: "top-[28%] left-[74%]", delay: 0.44 }, // upper-right
+  { index: 3, depth: 0.7, className: "top-[64%] left-[24%]", delay: 0.52 }, // lower-left
+  { index: 4, depth: 0.7, className: "top-[64%] left-[57%]", delay: 0.60 }, // lower-right
 ] as const;
 
 function TestimonialsSection() {
@@ -1071,7 +1070,7 @@ function TestimonialsSection() {
       </div>
 
       {/* ── Desktop layout: parallax floating cards ── */}
-      <div className="relative hidden min-h-[780px] items-center justify-center overflow-hidden md:flex">
+      <div className="relative hidden min-h-[620px] items-center justify-center overflow-hidden md:flex">
         {/* Radial glow */}
         <div
           className="pointer-events-none absolute left-1/2 top-1/2 h-[400px] w-[600px] -translate-x-1/2 -translate-y-1/2"
@@ -1120,7 +1119,7 @@ function TestimonialsSection() {
 ================================================================ */
 const CREDENTIALS = [
   {
-    label: "HSA Class B Regulatory Pathway",
+    label: "HSA Class A Regulatory Pathway",
     sub: "2026 Projection",
   },
   {

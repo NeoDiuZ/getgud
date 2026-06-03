@@ -55,7 +55,7 @@ export default function MedicalDisclaimer() {
 
           <Section title="2. Regulatory Status">
             <p>
-              Neural Drive is pursuing regulatory clearance under the Health Sciences Authority (HSA) Class B Medical
+              Neural Drive is pursuing regulatory clearance under the Health Sciences Authority (HSA) Class A Medical
               Device pathway in Singapore, with a projected submission timeline of Q1 2026. Until such clearance is
               granted, the device may only be used under strictly supervised clinical research settings with appropriate
               ethics board approval.
