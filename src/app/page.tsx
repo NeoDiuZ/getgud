@@ -71,6 +71,7 @@ function Nav() {
     { label: "Try it",       href: "#try" },
     { label: "How it works", href: "#process" },
     { label: "Technology",   href: "#technology" },
+    { label: "Team",         href: "/team" },
     { label: "Compare",      href: "/compare" },
   ];
 
@@ -1332,6 +1333,15 @@ function Footer() {
               Singapore&rsquo;s breakthrough brain-computer interface giving
               voice to the paralyzed in just 10 seconds.
             </p>
+            <a
+              href="/team"
+              className="mt-4 inline-flex items-center gap-1.5 text-[0.875rem] font-medium text-nd-primary transition-colors duration-200 hover:text-nd-primary-hover"
+            >
+              Meet the team
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                <path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
           </div>
 
           {/* Col 2 — Clinical Excellence */}
@@ -1380,7 +1390,7 @@ function Footer() {
                     <rect x="1" y="3" width="12" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.2"/>
                     <path d="M1 4.5l6 4 6-4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
                   </svg>
-                  mo@neuraldrive.tech
+                  nyan@neuraldrive.tech
                 </a>
               </li>
               <li>
