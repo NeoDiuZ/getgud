@@ -418,7 +418,7 @@ function MarqueeSection() {
    TRACTION STRIP — consolidated credibility (funding, clinical, regulatory)
 ================================================================ */
 const TRACTION = [
-  "SGD $275K seed secured",
+  "SGD $275K secured",
   "Tan Tock Seng Hospital collaboration",
   "HSA Class A pathway · Q1 2026",
 ];
