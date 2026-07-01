@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, useInView } from "framer-motion";
+import TeamShowcase, { type TeamMember } from "@/components/ui/team-showcase";
 
 /* ================================================================
    EASE — shared curve, matches the rest of the site
@@ -202,71 +202,6 @@ function TeamHeader() {
 }
 
 /* ================================================================
-   MEMBER ROW — alternating editorial portrait + bio
-================================================================ */
-function MemberRow({ member, index }: { member: Member; index: number }) {
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: "0px 0px -100px 0px" });
-  const reversed = index % 2 === 1;
-
-  return (
-    <motion.article
-      ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.8, ease: EASE }}
-      className={`group flex flex-col gap-8 lg:items-center lg:gap-16 ${
-        reversed ? "lg:flex-row-reverse" : "lg:flex-row"
-      }`}
-    >
-      {/* Portrait */}
-      <div className="lg:w-[42%]">
-        <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[1.25rem] border border-nd-border-dim bg-nd-surface">
-          <Image
-            src={member.photo}
-            alt={member.alt}
-            fill
-            sizes="(max-width: 1024px) 100vw, 42vw"
-            className={`object-cover ${member.focus} grayscale transition-all duration-[600ms] ease-out group-hover:grayscale-0 group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100`}
-          />
-        </div>
-      </div>
-
-      {/* Bio */}
-      <div className="lg:flex-1">
-        <p className="mb-3 text-[0.6875rem] font-semibold uppercase tracking-[0.18em] text-nd-primary">
-          {member.role}
-        </p>
-        <h2
-          className="font-display font-extrabold tracking-tighter text-nd-ink"
-          style={{ fontSize: "clamp(1.875rem, 3.5vw, 2.75rem)", lineHeight: 1.05 }}
-        >
-          {member.name}
-        </h2>
-
-        <p className="mt-5 max-w-[48ch] leading-relaxed text-nd-muted text-pretty" style={{ fontSize: "1.0625rem" }}>
-          {member.bio}
-        </p>
-
-        {member.linkedin && (
-          <a
-            href={member.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-nd-primary transition-colors hover:text-nd-primary-hover"
-          >
-            Connect on LinkedIn
-            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-              <path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-        )}
-      </div>
-    </motion.article>
-  );
-}
-
-/* ================================================================
    CLOSING CTA
 ================================================================ */
 function TeamCTA() {
@@ -359,11 +294,18 @@ export default function TeamPage() {
       <TeamHeader />
 
       <section className="mx-auto max-w-[1080px] px-5 pb-24 sm:px-8 md:pb-32" aria-label="Team members">
-        <div className="flex flex-col gap-20 md:gap-28">
-          {TEAM.map((member, i) => (
-            <MemberRow key={member.name} member={member} index={i} />
-          ))}
-        </div>
+        <Reveal>
+          <TeamShowcase
+            members={TEAM.map<TeamMember>((m) => ({
+              id: m.name,
+              name: m.name,
+              role: m.role,
+              image: m.photo,
+              focus: m.focus,
+              social: m.linkedin ? { linkedin: m.linkedin } : undefined,
+            }))}
+          />
+        </Reveal>
       </section>
 
       <TeamCTA />
