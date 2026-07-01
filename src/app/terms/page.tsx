@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Terms of Service — Neural Drive",
+  title: "Terms of Service | Neural Drive",
   description: "Terms and conditions governing use of Neural Drive's website and services.",
 };
 
@@ -52,8 +52,8 @@ export default function TermsOfService() {
 
           <Section title="3. Intellectual Property">
             <p>
-              All content on this website — including text, graphics, logos, images, software, and research
-              summaries — is the exclusive property of Neural Drive Pte. Ltd. or its licensors and is protected
+              All content on this website, including text, graphics, logos, images, software, and research
+              summaries, is the exclusive property of Neural Drive Pte. Ltd. or its licensors and is protected
               by applicable copyright, trademark, and intellectual property laws.
             </p>
             <p>

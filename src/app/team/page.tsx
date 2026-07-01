@@ -11,9 +11,9 @@ import { motion, useInView } from "framer-motion";
 const EASE: [number, number, number, number] = [0.23, 1, 0.32, 1];
 
 const DEMO_MAIL =
-  "https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20%E2%80%94%20Book%20a%20Demo";
+  "https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20-%20Book%20a%20Demo";
 const INVESTOR_MAIL =
-  "https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20%E2%80%94%20Investor%20%26%20Partnership%20Inquiry";
+  "https://mail.google.com/mail/?view=cm&fs=1&to=mo@neuraldrive.tech&su=Neural%20Drive%20-%20Investor%20%26%20Partnership%20Inquiry";
 
 /* ================================================================
    TEAM ROSTER
@@ -105,7 +105,7 @@ function TeamNav() {
   const links = [
     { label: "How it works", href: "/#process" },
     { label: "Technology",   href: "/#technology" },
-    { label: "Compare",      href: "/compare" },
+    { label: "Compare",      href: "/#compare" },
   ];
 
   return (

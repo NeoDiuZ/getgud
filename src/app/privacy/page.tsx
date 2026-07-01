@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Neural Drive",
+  title: "Privacy Policy | Neural Drive",
   description: "How Neural Drive collects, uses, and protects your personal information.",
 };
 
@@ -46,10 +46,10 @@ export default function PrivacyPolicy() {
           <Section title="2. Information We Collect">
             <p>We may collect the following categories of personal data:</p>
             <ul>
-              <li><strong>Contact information</strong> — name, email address, phone number, and organisation, when provided via our contact forms or access requests.</li>
-              <li><strong>Usage data</strong> — IP address, browser type, pages visited, time spent, and referring URLs, collected automatically through standard server logs and analytics.</li>
-              <li><strong>Communications</strong> — content of messages you send us via email or our website forms.</li>
-              <li><strong>Device data</strong> — device type, operating system, and screen resolution, for the purpose of optimising site performance.</li>
+              <li><strong>Contact information</strong>: name, email address, phone number, and organisation, when provided via our contact forms or access requests.</li>
+              <li><strong>Usage data</strong>: IP address, browser type, pages visited, time spent, and referring URLs, collected automatically through standard server logs and analytics.</li>
+              <li><strong>Communications</strong>: content of messages you send us via email or our website forms.</li>
+              <li><strong>Device data</strong>: device type, operating system, and screen resolution, for the purpose of optimising site performance.</li>
             </ul>
             <p>We do not collect neural signal data or any physiological data through this website.</p>
           </Section>
@@ -68,7 +68,7 @@ export default function PrivacyPolicy() {
             <p>
               We process personal data on the following grounds: your consent (where obtained), the performance of a
               contract or pre-contractual steps, compliance with a legal obligation, and our legitimate interests in
-              operating and improving our services — provided those interests are not overridden by your rights.
+              operating and improving our services, provided those interests are not overridden by your rights.
             </p>
           </Section>
 
@@ -77,9 +77,9 @@ export default function PrivacyPolicy() {
               We do not sell your personal data. We may share it with:
             </p>
             <ul>
-              <li><strong>Service providers</strong> — third-party vendors who assist with hosting, analytics, and communications, bound by confidentiality agreements.</li>
-              <li><strong>Clinical partners</strong> — such as Tan Tock Seng Hospital, under data-sharing agreements that comply with the PDPA and applicable medical data regulations.</li>
-              <li><strong>Regulatory authorities</strong> — where required by law or court order.</li>
+              <li><strong>Service providers</strong>: third-party vendors who assist with hosting, analytics, and communications, bound by confidentiality agreements.</li>
+              <li><strong>Clinical partners</strong>: such as Tan Tock Seng Hospital, under data-sharing agreements that comply with the PDPA and applicable medical data regulations.</li>
+              <li><strong>Regulatory authorities</strong>: where required by law or court order.</li>
             </ul>
           </Section>
 
@@ -93,8 +93,8 @@ export default function PrivacyPolicy() {
 
           <Section title="7. Security">
             <p>
-              We implement appropriate technical and organisational measures — including encryption in transit and at
-              rest, access controls, and regular security reviews — to protect your personal data against unauthorised
+              We implement appropriate technical and organisational measures, including encryption in transit and at
+              rest, access controls, and regular security reviews, to protect your personal data against unauthorised
               access, disclosure, or destruction. However, no transmission over the Internet is completely secure, and
               we cannot guarantee absolute security.
             </p>

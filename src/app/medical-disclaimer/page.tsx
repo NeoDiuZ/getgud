@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Medical Disclaimer — Neural Drive",
+  title: "Medical Disclaimer | Neural Drive",
   description: "Important medical and regulatory information regarding Neural Drive's brain-computer interface technology.",
 };
 
@@ -82,8 +82,8 @@ export default function MedicalDisclaimer() {
           <Section title="4. Accuracy of Information">
             <p>
               We make reasonable efforts to ensure that the information on this website is accurate and up to date.
-              However, medical and scientific knowledge evolves rapidly. Neural Drive makes no warranty — express or
-              implied — regarding the completeness, accuracy, or timeliness of any information provided.
+              However, medical and scientific knowledge evolves rapidly. Neural Drive makes no warranty, express or
+              implied, regarding the completeness, accuracy, or timeliness of any information provided.
             </p>
             <p>
               Statistics, metrics, and technical specifications are based on internal research and are subject to
@@ -104,10 +104,10 @@ export default function MedicalDisclaimer() {
             </p>
           </Section>
 
-          <Section title="6. No Doctor–Patient Relationship">
+          <Section title="6. No Doctor-Patient Relationship">
             <p>
               Use of this website, submission of an access request, or correspondence with Neural Drive does not
-              establish a doctor–patient relationship, clinical relationship, or any duty of care. Neural Drive is a
+              establish a doctor-patient relationship, clinical relationship, or any duty of care. Neural Drive is a
               technology company and not a licensed medical provider.
             </p>
           </Section>
@@ -124,7 +124,7 @@ export default function MedicalDisclaimer() {
             <p>
               For clinical enquiries, safety concerns, or regulatory questions, please contact:
               <br />
-              <strong>Neural Drive Pte. Ltd. — Clinical Affairs</strong>
+              <strong>Neural Drive Pte. Ltd., Clinical Affairs</strong>
               <br />
               Email: <a href="mailto:mo@neuraldrive.tech">mo@neuraldrive.tech</a>
               <br />
