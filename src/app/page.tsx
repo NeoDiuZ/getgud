@@ -1488,23 +1488,179 @@ function PartnershipHighlight() {
 }
 
 /* ================================================================
-   PRESS & VOICES — a paper "newsletter wall" pinning together
-   what families say and what the press has written about us.
+   IN THE PRESS — public proof: a national leader trying the device,
+   next to partial previews of the two press articles.
+================================================================ */
+const PRESS_ARTICLES = [
+  {
+    outlet: "The Straits Times",
+    section: "Tech",
+    date: "19 Apr 2026",
+    byline: "Sarah Koh",
+    headline:
+      "AI tool helps paralysed patients communicate through blinks and focus; hospital to trial device",
+    excerpt:
+      "An affordable, non-invasive neural-detection device is helping paralysed patients communicate through deliberate blinks and focus, with no surgery and no gel. The Singapore-built system is now lined up to be trialled with patients at Tan Tock Seng Hospital, where clinicians will put it to work on the ward.",
+    href: "https://www.straitstimes.com/tech/ai-tool-helps-paralysed-patients-communicate-through-blinks-and-focus-hospital-to-trial-device",
+  },
+  {
+    outlet: "The Straits Times",
+    section: "Singapore",
+    date: "9 Feb 2026",
+    byline: "Dillon Loh",
+    headline:
+      "Heart-driven innovator: 21-year-old start-up founder uses accessibility tech to help others",
+    excerpt:
+      "From selling snacks to his schoolmates, Singapore Polytechnic graduate Raymond Loong Ng has grown into an entrepreneur whose accessibility-focused tech start-ups have received more than $200,000 in funding. One of them, Neural Drive, builds a non-invasive brain-computer interface that gives paralysed patients a way to speak again.",
+    href: "https://www.straitstimes.com/singapore/heart-driven-innovator-21-year-old-start-up-founder-uses-accessibility-tech-to-help-others",
+  },
+];
+
+function ArticlePreview({ article }: { article: (typeof PRESS_ARTICLES)[number] }) {
+  return (
+    <a
+      href={article.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group flex h-full flex-col overflow-hidden rounded-2xl border border-nd-border-dim bg-nd-surface transition-all duration-300 hover:border-nd-primary/40 hover:shadow-[0_18px_40px_-24px_rgba(12,28,20,0.4)]"
+    >
+      {/* Masthead */}
+      <div className="flex items-center justify-between gap-3 border-b border-nd-border-dim px-5 py-4">
+        <div className="flex items-center gap-2.5">
+          <span
+            className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-md bg-nd-ink font-display text-[0.6875rem] font-black tracking-tight text-white"
+            aria-hidden="true"
+          >
+            ST
+          </span>
+          <div className="leading-tight">
+            <p className="font-display text-[0.8125rem] font-bold tracking-tight text-nd-ink">
+              {article.outlet}
+            </p>
+            <p className="text-[0.6875rem] text-nd-muted">
+              {article.date} · By {article.byline}
+            </p>
+          </div>
+        </div>
+        <span className="rounded-full bg-nd-primary/10 px-2.5 py-1 text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-nd-primary">
+          {article.section}
+        </span>
+      </div>
+
+      {/* Body — shown in part, faded to preview the rest */}
+      <div className="px-5 pt-4">
+        <h3 className="font-display text-[1.0625rem] font-bold leading-snug tracking-tight text-nd-ink">
+          {article.headline}
+        </h3>
+        <div className="relative mt-2.5 max-h-[5.5rem] overflow-hidden">
+          <p className="text-[0.875rem] leading-relaxed text-nd-muted">{article.excerpt}</p>
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-nd-surface to-transparent"
+            aria-hidden="true"
+          />
+        </div>
+      </div>
+
+      {/* Footer CTA */}
+      <span className="mt-auto flex items-center gap-1.5 px-5 pb-4 pt-3 text-[0.75rem] font-semibold text-nd-primary">
+        Continue reading on straitstimes.com
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 13 13"
+          fill="none"
+          aria-hidden="true"
+          className="transition-transform duration-200 group-hover:translate-x-0.5"
+        >
+          <path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </span>
+    </a>
+  );
+}
+
+function InThePressSection() {
+  return (
+    <section
+      className="border-t border-nd-border-dim bg-nd-bg"
+      aria-labelledby="press-feature-heading"
+    >
+      <div className="mx-auto max-w-[1280px] px-4 py-20 sm:px-8 md:py-28">
+        <Reveal className="mb-12 max-w-[62ch]">
+          <span className="mb-5 block text-[0.6875rem] font-semibold uppercase tracking-[0.22em] text-nd-primary">
+            In the press
+          </span>
+          <h2
+            id="press-feature-heading"
+            className="font-display font-black tracking-tighter text-nd-ink"
+            style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.75rem)", lineHeight: 1.04 }}
+          >
+            Tried by leaders, covered by the press
+          </h2>
+          <p
+            className="mt-5 leading-relaxed text-nd-muted text-pretty"
+            style={{ fontSize: "clamp(1rem, 1.3vw, 1.125rem)" }}
+          >
+            When Singapore&rsquo;s former Chief of Army fits the electrode himself, and the
+            national paper of record writes it up twice, the device is doing its talking in
+            public.
+          </p>
+        </Reveal>
+
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
+          {/* Feature photograph */}
+          <Reveal className="lg:col-span-7">
+            <figure className="group relative h-full min-h-[300px] overflow-hidden rounded-[1.5rem] border border-nd-border-dim bg-nd-surface sm:min-h-[380px]">
+              <Image
+                src="/david-neo-neuraldrive.png"
+                alt="Mr David Neo, former Chief of Army, wearing Neural Drive's forehead electrode and earphones as he tries the device at INSPIRECON 2025"
+                fill
+                sizes="(max-width: 1024px) 100vw, 720px"
+                className="object-cover object-center transition-transform duration-700 ease-out will-change-transform group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+              />
+              <div
+                className="pointer-events-none absolute inset-0"
+                style={{ background: "linear-gradient(180deg, rgba(12,28,20,0) 42%, rgba(12,28,20,0.74) 100%)" }}
+                aria-hidden="true"
+              />
+              <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-nd-ink/80 px-2.5 py-1 text-[0.6875rem] font-medium text-white backdrop-blur-sm">
+                <span className="h-1.5 w-1.5 rounded-full bg-nd-primary" aria-hidden="true" />
+                INSPIRECON 2025
+              </span>
+              <figcaption className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
+                <p className="font-display text-[1.125rem] font-bold leading-snug text-white sm:text-[1.375rem]">
+                  Mr David Neo tries Neural Drive
+                </p>
+                <p className="mt-1.5 max-w-[46ch] text-[0.8125rem] leading-snug text-white/85 sm:text-[0.875rem]">
+                  Singapore&rsquo;s former Chief of Army fits the forehead electrode and headset,
+                  speaking through focus and deliberate blinks.
+                </p>
+              </figcaption>
+            </figure>
+          </Reveal>
+
+          {/* Partial article previews */}
+          <div className="flex flex-col gap-6 lg:col-span-5">
+            {PRESS_ARTICLES.map((article, i) => (
+              <Reveal key={article.href} delay={0.06 * (i + 1)} className="flex-1">
+                <ArticlePreview article={article} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ================================================================
+   VOICES — a paper "newsletter wall" of what families tell us.
 ================================================================ */
 type WallItem =
   | { kind: "press"; outlet: string; title: string; blurb: string; href: string; tilt: string; feature?: boolean }
   | { kind: "quote"; quote: string; author: string; role: string; tilt: string };
 
 const WALL_ITEMS: WallItem[] = [
-  {
-    kind: "press",
-    outlet: "The Straits Times",
-    title: "AI tool helps paralysed patients communicate through blinks and focus; hospital to trial device",
-    blurb: "Neural Drive's non-invasive interface lets patients speak essential needs through deliberate blinks, with a hospital lined up to trial the device.",
-    href: "https://www.straitstimes.com/tech/ai-tool-helps-paralysed-patients-communicate-through-blinks-and-focus-hospital-to-trial-device",
-    tilt: "-rotate-1",
-    feature: true,
-  },
   {
     kind: "quote",
     quote: "He couldn't really form proper words, and we relied on his grunts to understand what he needed. It was really challenging. The device is compact and a lot less expensive than other gadgets in the market.",
@@ -1518,14 +1674,6 @@ const WALL_ITEMS: WallItem[] = [
     author: "Rachel Tan",
     role: "Daughter of a stroke survivor",
     tilt: "-rotate-[0.6deg]",
-  },
-  {
-    kind: "press",
-    outlet: "The Straits Times",
-    title: "Heart-driven innovator: 21-year-old start-up founder uses accessibility tech to help others",
-    blurb: "A profile of the young founder behind Neural Drive and the personal conviction driving its accessibility-first technology.",
-    href: "https://www.straitstimes.com/singapore/heart-driven-innovator-21-year-old-start-up-founder-uses-accessibility-tech-to-help-others",
-    tilt: "rotate-[0.8deg]",
   },
   {
     kind: "quote",
@@ -1634,15 +1782,15 @@ function PressWallSection() {
       <div className="mx-auto max-w-[1280px] px-4 py-20 sm:px-8 md:py-28">
         <Reveal className="mb-12 max-w-[60ch]">
           <span className="mb-5 block text-[0.6875rem] font-semibold uppercase tracking-[0.22em] text-nd-primary">
-            Press &amp; voices
+            In their words
           </span>
           <h2
             id="press-heading"
             className="font-display font-black tracking-tighter text-nd-ink"
             style={{ fontSize: "clamp(2.25rem, 4.5vw, 3.75rem)", lineHeight: 1.04 }}
           >
-            Trusted by <span className="text-nd-primary">368</span> people,
-            <br className="hidden sm:block" /> and written up by the press
+            Trusted by <span className="text-nd-primary">368</span> people
+            <br className="hidden sm:block" /> finding their voice again
           </h2>
         </Reveal>
 
@@ -1823,6 +1971,7 @@ export default function Home() {
       <TractionStrip />
       <PartnershipHighlight />
       <MarqueeSection />
+      <InThePressSection />
       <PressWallSection />
       <VisionSection />
       <CTASection />
