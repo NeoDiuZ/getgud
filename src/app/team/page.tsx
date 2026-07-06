@@ -53,7 +53,7 @@ const TEAM: Member[] = [
   },
   {
     name: "Kaushik Manian",
-    role: "Chief Technology Officer",
+    role: "Ex-Apple",
     bio: "Kaushik owns the hardware. He spent three years as an engineer at Apple and built a 3D-printing company to a seven-figure exit, bringing deep hardware and IoT systems expertise to the device.",
     photo: "/Kaushik.png",
     alt: "Portrait of Kaushik Manian, Chief Technology Officer of Neural Drive",
@@ -62,7 +62,7 @@ const TEAM: Member[] = [
   },
   {
     name: "Nyan Lin Htun",
-    role: "Chief Operations Officer",
+    role: "Founding Engineer",
     bio: "Nyan keeps Neural Drive running day to day. A full-stack developer with more than 16 hackathon wins, he is the glue between the hardware and the software, owning the integrations that make the two work as one.",
     photo: "/nyan.png",
     alt: "Portrait of Nyan Lin Htun, Chief Operations Officer of Neural Drive",
