@@ -191,8 +191,7 @@ function TeamHeader() {
             className="mt-6 max-w-[58ch] leading-relaxed text-nd-muted text-pretty"
             style={{ fontSize: "clamp(1rem, 1.4vw, 1.125rem)" }}
           >
-            Four founders who have built and sold companies, shipped hardware at
-            Apple, and won on the world stage, now focused on one thing: giving
+            Four founders who have built and sold companies, been in apple, and won on the world stage, now focused on one thing: giving
             communication back to the people who have lost it.
           </p>
         </Reveal>
