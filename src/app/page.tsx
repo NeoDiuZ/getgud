@@ -1921,7 +1921,7 @@ function Footer() {
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                     <path d="M2 2.5C2 2.5 3 1 4.5 2.5L5.5 4C5.5 4 6 4.5 5 5.5C4 6.5 5 7.5 6.5 9C8 10.5 9 11.5 10 10.5C11 9.5 11.5 10 11.5 10L13 11C14 12 12.5 13.5 12 13.5C11 13.5 8 13 5 10C2 7 1 4 2 2.5Z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/>
                   </svg>
-                  +65 8113 3532
+                  +65 8308 7479
                 </a>
               </li>
             </ul>
