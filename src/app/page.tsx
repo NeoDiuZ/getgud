@@ -72,6 +72,7 @@ function Nav() {
     { label: "Technology",   href: "#technology" },
     { label: "Compare",      href: "#compare" },
     { label: "Team",         href: "/team" },
+    { label: "App",          href: "/app" },
   ];
 
   return (
