@@ -53,7 +53,7 @@ const TEAM: Member[] = [
   },
   {
     name: "Kaushik Manian",
-    role: "Ex-Apple",
+    role: "Founding Engineer",
     bio: "Kaushik owns the hardware. He spent three years as an engineer at Apple and built a 3D-printing company to a seven-figure exit, bringing deep hardware and IoT systems expertise to the device.",
     photo: "/Kaushik.png",
     alt: "Portrait of Kaushik Manian, Chief Technology Officer of Neural Drive",
