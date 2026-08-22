@@ -2,14 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Fontshare fonts ──────────────────────────────── */
-/* Loaded via <link> in layout.tsx */
+/* ── Local fonts for China deployment ───────────────── */
+@font-face {
+  font-family: "Cabinet Grotesk";
+  src: url("/fonts/CabinetGrotesk-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+}
 
 /* ── Base layer overrides ─────────────────────────── */
 @layer base {
   :root {
-    --font-display: "Cabinet Grotesk", system-ui, sans-serif;
-    --font-body:    "Satoshi",          system-ui, sans-serif;
+    --font-display: "Cabinet Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-body:    "Satoshi", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   }
 
   html {
