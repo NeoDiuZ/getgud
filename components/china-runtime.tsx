@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-const DEMO_VIDEO = "/videos/Neural%20Drive%20Demo.mp4";
+const DEMO_VIDEO = "/videos/neural-drive-demo-video.mp4";
 const CONTACT_EMAIL = "mo@neuraldrive.tech";
 const CONTACT_PHONE_HREF = "tel:+6581133532";
 const CONTACT_PHONE_LABEL = "+65 8113 3532";
