@@ -6,15 +6,15 @@ This branch is prepared for a Hong Kong-hosted China-facing deployment of `neura
 
 The browser-facing China build intentionally avoids runtime dependencies on Google Mail, YouTube, Fontshare, and nonessential remote image hosts.
 
-The required local assets are now present in this branch:
+The required local assets for this branch are:
 
 - `public/fonts/CabinetGrotesk-Regular.otf`
 - `public/fonts/CabinetGrotesk-Bold.otf`
 - `public/fonts/Satoshi-Regular.otf`
 - `public/fonts/Satoshi-Bold.otf`
-- `public/videos/Neural Drive Demo.mp4`
+- `public/videos/neural-drive-demo-video.mp4`
 
-The demo video is approximately 13 MB and is served directly from the site rather than YouTube.
+The demo video is served directly from the site rather than YouTube.
 
 ## Contact details
 
@@ -24,7 +24,7 @@ The demo video is approximately 13 MB and is served directly from the site rathe
 ## China-specific behavior
 
 - Gmail composer URLs are converted to standard `mailto:` URLs so visitors can use their own mail provider.
-- YouTube embeds are replaced by the local `/videos/Neural%20Drive%20Demo.mp4` file.
+- YouTube embeds are replaced by the local `/videos/neural-drive-demo-video.mp4` file.
 - Third-party iframes are blocked by the China layout.
 - Cabinet Grotesk and Satoshi Regular/Bold fonts are loaded locally from `/public/fonts`.
 - Nonessential remote image hosts are removed from the Next.js image allowlist.
