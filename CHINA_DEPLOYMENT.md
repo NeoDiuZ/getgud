@@ -2,19 +2,19 @@
 
 This branch is prepared for a Hong Kong-hosted China-facing deployment of `neuraldrive.tech`.
 
-## Required local assets
+## Local assets
 
 The browser-facing China build intentionally avoids runtime dependencies on Google Mail, YouTube, Fontshare, and nonessential remote image hosts.
 
-Before deploying, add these exact binary files to this branch:
+The required local assets are now present in this branch:
 
-| Repository path | Source file | SHA-256 |
-| --- | --- | --- |
-| `public/fonts/CabinetGrotesk-Regular.otf` | Cabinet Grotesk Regular | `893258bc136d7ec7487333fa4511f7c5794f6ad7c77eee2437881c6df985c0b1` |
-| `public/fonts/Satoshi-Regular.otf` | Satoshi Regular | `711c6243cdc5431f9cc966e4de18bfb940365bad81acffd1e7948dbe3f254386` |
-| `public/videos/neural-drive-demo.mp4` | Neural Drive Demo | `25a2ed141494e37ebaacc9f33bc29ed0c0a4be019afdb64b41330ccd603045c2` |
+- `public/fonts/CabinetGrotesk-Regular.otf`
+- `public/fonts/CabinetGrotesk-Bold.otf`
+- `public/fonts/Satoshi-Regular.otf`
+- `public/fonts/Satoshi-Bold.otf`
+- `public/videos/Neural Drive Demo.mp4`
 
-The demo video supplied for this branch is H.264 + AAC, 1280×720, approximately 84 seconds and 13 MB.
+The demo video is approximately 13 MB and is served directly from the site rather than YouTube.
 
 ## Contact details
 
@@ -24,9 +24,9 @@ The demo video supplied for this branch is H.264 + AAC, 1280×720, approximately
 ## China-specific behavior
 
 - Gmail composer URLs are converted to standard `mailto:` URLs so visitors can use their own mail provider.
-- YouTube embeds are replaced by `/videos/neural-drive-demo.mp4`.
+- YouTube embeds are replaced by the local `/videos/Neural%20Drive%20Demo.mp4` file.
 - Third-party iframes are blocked by the China layout.
-- Cabinet Grotesk and Satoshi are loaded locally from `/public/fonts`.
+- Cabinet Grotesk and Satoshi Regular/Bold fonts are loaded locally from `/public/fonts`.
 - Nonessential remote image hosts are removed from the Next.js image allowlist.
 - The HSA projected submission timeline is stated as 2027.
 
@@ -48,4 +48,4 @@ By default Next.js listens on port 3000. In production, place an HTTPS reverse p
 4. Test reachability using mainland China networks (ideally China Telecom, China Unicom, and China Mobile).
 5. Only after validation, configure geo-aware DNS so mainland-China traffic for `neuraldrive.tech` goes to Alibaba while the default route continues to Vercel.
 
-Do not point production mainland traffic at this branch until all three required binary assets are present and a production build succeeds.
+Do not point production mainland traffic at this branch until a production build succeeds and the temporary China deployment passes the route/media/network checks above.
