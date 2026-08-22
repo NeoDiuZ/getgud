@@ -37,7 +37,7 @@ export default function MedicalDisclaimer() {
         <h1 className="mb-2 font-display text-4xl font-extrabold tracking-tighter text-nd-ink">
           Medical Disclaimer
         </h1>
-        <p className="mb-14 text-sm text-nd-muted">Last updated: 31 May 2026</p>
+        <p className="mb-14 text-sm text-nd-muted">Last updated: 22 August 2026</p>
 
         <div>
           <Section title="1. Not a Substitute for Medical Advice">
@@ -56,7 +56,7 @@ export default function MedicalDisclaimer() {
           <Section title="2. Regulatory Status">
             <p>
               Neural Drive is pursuing regulatory clearance under the Health Sciences Authority (HSA) Class A Medical
-              Device pathway in Singapore, with a projected submission timeline of Q1 2026. Until such clearance is
+              Device pathway in Singapore, with a projected submission timeline of 2027. Until such clearance is
               granted, the device may only be used under strictly supervised clinical research settings with appropriate
               ethics board approval.
             </p>
