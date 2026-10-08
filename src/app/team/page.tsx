@@ -44,10 +44,10 @@ const TEAM: Member[] = [
   },
   {
     name: "Raymond Loong Ng",
-    role: "Chief AI Officer",
+    role: "Chief Technology Officer",
     bio: "Raymond heads the AI behind Neural Drive's blink decoding. A two-time AI founder and Director of Singapore Youth AI, he has taken home 26 global tech competition wins.",
     photo: "/Raymond.jpg",
-    alt: "Portrait of Raymond Loong Ng, Chief AI Officer of Neural Drive",
+    alt: "Portrait of Raymond Loong Ng, Chief Technology Officer of Neural Drive",
     focus: "object-center",
     linkedin: "https://www.linkedin.com/in/raymond-loong-ng/",
   },
@@ -56,7 +56,7 @@ const TEAM: Member[] = [
     role: "Founding Engineer",
     bio: "Kaushik owns the hardware. He spent three years as an engineer at Apple and built a 3D-printing company to a seven-figure exit, bringing deep hardware and IoT systems expertise to the device.",
     photo: "/Kaushik.png",
-    alt: "Portrait of Kaushik Manian, Chief Technology Officer of Neural Drive",
+    alt: "Portrait of Kaushik Manian, Founding Engineer of Neural Drive",
     focus: "object-top",
     linkedin: "https://www.linkedin.com/in/kaushik-manian/",
   },
@@ -65,9 +65,18 @@ const TEAM: Member[] = [
     role: "Founding Engineer",
     bio: "Nyan keeps Neural Drive running day to day. A full-stack developer with more than 16 hackathon wins, he is the glue between the hardware and the software, owning the integrations that make the two work as one.",
     photo: "/nyan.png",
-    alt: "Portrait of Nyan Lin Htun, Chief Operations Officer of Neural Drive",
+    alt: "Portrait of Nyan Lin Htun, Founding Engineer of Neural Drive",
     focus: "object-center",
     linkedin: "https://www.linkedin.com/in/nyanlinhtun/",
+  },
+  {
+    name: "Zakariay Drebi",
+    role: "Founding Growth",
+    bio: "Zakariay joins Neural Drive as Founding Growth.",
+    photo: "/zakariay-placeholder.svg",
+    alt: "Initials placeholder for Zakariay Drebi, Founding Growth at Neural Drive",
+    focus: "object-center",
+    linkedin: "",
   },
 ];
 
@@ -191,7 +200,7 @@ function TeamHeader() {
             className="mt-6 max-w-[58ch] leading-relaxed text-nd-muted text-pretty"
             style={{ fontSize: "clamp(1rem, 1.4vw, 1.125rem)" }}
           >
-            Four founders who have built and sold companies, been in apple, and won on the world stage, now focused on one thing: giving
+            A team bringing together leadership, technology, engineering, and growth, focused on one thing: giving
             communication back to the people who have lost it.
           </p>
         </Reveal>
